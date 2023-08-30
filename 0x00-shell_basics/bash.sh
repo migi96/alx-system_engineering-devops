@@ -62,8 +62,10 @@ ls -xamp' > 103-commas
 echo '0 string SCHOOL School data
 !:mime School' > school.mgc
 
-file -C -m school
-rm school
+file -C -m school.mgc
+
+rm school.mgc
+
 
 chmod +x 0-current_working_directory 1-listit school.mgc 2-bring_me_home 3-listfiles 4-listmorefiles 5-listfilesdigitonly 6-firstdirectory 7-movethatfile 8-firstdelete 9-firstdirdeletion 10-back 11-lists 12-file_type 13-symbolic_link 14-copy_html 100-lets_move 101-clean_emacs 102-tree 103-commas 
 
