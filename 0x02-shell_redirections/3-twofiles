@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Content of /etc/passwd:"
+cat /etc/passwd
+echo ""  # This adds an empty line for separation
+echo "Content of /etc/hosts:"
+cat /etc/hosts
+
