@@ -1,0 +1,73 @@
+#!/bin/bash
+
+clear
+#check $path
+while true; do
+    read -p "Please write 'alx-system_engineering-devops' full path: " path
+    if [ -d "$path" ]; then
+        if [[ "$path" == *"/alx-system_engineering-devops"* ]]; then
+            break  # Exit the loop if the path is correct
+        else
+            echo "Path is not 'alx-system_engineering-devops' or its subdirectory. Exiting..."
+            exit 1
+        fi
+    else
+        clear
+        echo "Path is wrong. Please provide a valid path."
+    fi
+done
+#  /home/siroo/Desktop/alx-system_engineering-devops
+#chech if $dicretory is found
+cd $path
+directory=0x02-shell_redirections
+#chech if $dicretory is found
+if [ ! -d "$directory" ]; then
+   mkdir "$directory" 
+   cd $directory
+else
+   cd $directory
+fi
+
+echo '#This is readme file of task 0x02-shell_redirections' > README.md
+#create files
+echo -e '#!/bin/bash\necho "Hello, World"' > 0-hello_world
+echo -e '#!/bin/bash\necho "\"(Ôo)'\'\" > 1-confused_smiley
+echo -e '#!/bin/bash\ncat /etc/passwd' > 2-hellofile
+echo -e '#!/bin/bash\ncat /etc/passwd /etc/hosts' > 3-twofiles
+echo -e '#!/bin/bash\ntail -n 10 /etc/passwd' > 4-lastlines
+echo -e '#!/bin/bash\nhead -n 10 /etc/passwd' > 5-firstlines
+echo -e '#!/bin/bash\nhead -n 3 iacta | tail -n 1' > 6-third_line
+echo '#!/bin/bash
+echo "Best School" > \\\*\\\\"'\"Best School\"\\'"\\\\\*\$\\\?\\\*\\\*\\\*\\\*\\\*\:\)' > 7-file
+echo -e '#!/bin/bash\nls -la > ls_cwd_content' > 8-cwd_state
+echo -e '#!/bin/bash\ntail -n 1 iacta >> iacta' > 9-duplicate_last_line
+echo -e '#!/bin/bash\nfind . -type f -name "*.js" -delete' > 10-no_more_js
+echo -e '#!/bin/bash\nfind . -type d -not -name '.' | wc -l' > 11-directories
+echo -e '#!/bin/bash\nls -t1 | head -n 10' > 12-newest_files
+echo -e '#!/bin/bash\nsort | uniq -u' > 13-unique
+echo -e '#!/bin/bash\ngrep -i "root" /etc/passwd' > 14-findthatword
+echo -e '#!/bin/bash\ngrep -c -i "bin" /etc/passwd' > 15-countthatword
+echo -e '#!/bin/bash\ngrep -i "root" -A 3 /etc/passwd' > 16-whatsnext
+echo -e '#!/bin/bash\ngrep -i -v "bin" /etc/passwd' > 17-hidethisword
+echo -e '#!/bin/bash\ngrep -i "^[a-z]" /etc/ssh/sshd_config' > 18-letteronly
+echo -e '#!/bin/bash\ntr "A" "Z" | tr "c" "e"' > 19-AZ
+echo -e '#!/bin/bash\ntr -d cC' > 20-hiago
+echo -e '#!/bin/bash\nrev' > 21-reverse
+echo -e '#!/bin/bash\ncut -d ':' -f 1,6 /etc/passwd | sort' > 22-users_and_homes
+echo -e '#!/bin/bash\nfind . -empty | rev | cut -d '\''/'\'' -f 1 | rev' > 100-empty_casks
+echo -e '#!/bin/bash\nfind -type f -name "*.gif" | rev | cut -d "/" -f 1 | cut -d '\''.'\'' -f 2- | rev | LC_ALL=C sort -f' > 101-gifs
+echo -e '#!/bin/bash\ncut -c 1 | paste -s -d '\'''\'' | rev' > 102-acrostic
+echo -e '#!/bin/bash\ntail -n +2 | cut -f -1 | sort -k 1 | uniq -c | sort -rnk 1 | head -n 11 | rev | cut -d '\'' '\'' -f -1 | rev' > 103-the_biggest_fan
+#change permission for files except README.md
+find . -type f ! -name "*.md" -exec chmod +x {} \;
+clear
+
+#push to master
+git add .
+echo -n "Please enter the commit message: "
+read $commit_message
+git commit -m '$commit_message'
+git push
+
+clear 
+echo -e '\n\n\n\n\n                                 SCRIPTED \n\n\n\n\n'
