@@ -1,0 +1,1 @@
+This repository contains a collection of shell scripts that demonstrate various concepts related to shell variables and expansions. Each script is designed to showcase specific functionalities and tasks. Below is a brief overview of each script along with usage examples.
